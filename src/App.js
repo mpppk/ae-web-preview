@@ -16,13 +16,13 @@ class App extends Component {
     data.then(d => {
       console.log(d.data);
 
-      loadAnimation({
-        container: document.getElementById("test") , // the dom element
-        renderer: 'svg',
-        loop: true,
-        autoplay: true,
-        animationData: d.data // the animation data
-      });
+      // loadAnimation({
+      //   container: document.getElementById("test") , // the dom element
+      //   renderer: 'html',
+      //   loop: true,
+      //   autoplay: true,
+      //   animationData: d.data // the animation data
+      // });
     });
 
     return (
