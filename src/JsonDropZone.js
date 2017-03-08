@@ -13,27 +13,21 @@ class JsonDropZone extends Component {
 
   createFileReader() {
     let reader = new FileReader();
-    reader.onload = () => {
-      console.log(reader.result);
-      this.setState({hoge: JSON.parse(reader.result)});
-    };
+    reader.onload = () => this.setState({animData: JSON.parse(reader.result)});
     return reader;
   }
 
   onDrop(acceptedFiles, rejectedFiles){
-    console.log('Accepted files: ', acceptedFiles);
-    console.log('Rejected files: ', rejectedFiles);
     this.reader.readAsText(acceptedFiles[0]);
   }
 
   render() {
-    // console.log('hogehoge!', this.state.hoge);
     loadAnimation({
       container: document.getElementById("test") , // the dom element
       renderer: 'canvas',
       loop: true,
       autoplay: true,
-      animationData: this.state.hoge // the animation data
+      animationData: this.state.animData // the animation data
     });
 
     return (
