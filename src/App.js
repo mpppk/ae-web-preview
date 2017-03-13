@@ -33,7 +33,7 @@ class App extends Component {
             <img src={logo} className="App-logo" alt="logo" />
             <h2>AE2WEB</h2>
           </div>
-          <JsonDropZone onDrop={this.onDrop}/>
+          <JsonDropZone style={{marginTop: 20}} onDrop={this.onDrop}/>
         </div>
       </Provider>
     );
