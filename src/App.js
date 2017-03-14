@@ -13,27 +13,44 @@ class App extends Component {
   constructor(){
     super();
     this.onDrop = this.onDrop.bind(this);
+    this.onClick = this.onClick.bind(this);
+    this.state = {loaded: false};
+  }
+
+  getPreviewDOM() {
+    return document.getElementById("test");
+  }
+
+  onClick() {
+    this.getPreviewDOM().textContent = null;
+    this.setState({loaded: false});
   }
 
   onDrop(animData) {
     loadAnimation({
-      container: document.getElementById("test") , // the dom element
-      renderer: 'canvas',
+      container: this.getPreviewDOM(), // the dom element
+      renderer: 'svg',
       loop: true,
       autoplay: true,
       animationData: animData // the animation data
     });
+
+    this.setState({loaded: true});
   }
 
   render() {
+
+    const jsonDropZone = <JsonDropZone style={{marginTop: 20}} onDrop={this.onDrop}/>;
+    const resetButton = <button onClick={this.onClick}>Reset</button>;
+
     return (
       <Provider store={store}>
         <div className="App">
           <div className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
-            <h2>AE2WEB</h2>
+            <h2>AE WEB PREVIEW</h2>
           </div>
-          <JsonDropZone style={{marginTop: 20}} onDrop={this.onDrop}/>
+          {this.state.loaded ? resetButton : jsonDropZone}
         </div>
       </Provider>
     );
