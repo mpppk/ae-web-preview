@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Dropzone from 'react-dropzone';
+import Backup from 'react-icons/lib/md/backup';
 
 class JsonDropZone extends Component {
   constructor() {
@@ -33,7 +34,11 @@ class JsonDropZone extends Component {
     return (
     <div style={this.props.style}>
       <Dropzone style={dropZoneStyle} onDrop={this.onDrop} accept="application/json">
-        Try dropping some files here, or click to select files to upload.
+        <div style={{fontSize: 20, color: '#A4A4A4'}}>
+          <Backup size={120}/> <br/>
+          Try dropping bodymovin json file here, <br/>
+          or click to select file to preview.
+        </div>
       </Dropzone>
     </div>
     );
